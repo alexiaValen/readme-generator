@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/alexiaValen/readme-generator#readme",
   "dependencies": {
-    "inquirer": "^9.1.5"
+    "inquirer": "^8.2.4"
   }
 }

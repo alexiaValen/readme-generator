@@ -1,8 +1,20 @@
 // TODO: Include packages needed for this application
 var inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
+var fs = require('fs');
 
 // TODO: Create an array of questions for user input
 const questions = [
+    {
+        type: 'title',
+        name: 'motivation',
+        message: 'What is your title?',
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'What is your description?',
+    },
     {
         type: 'input',
         name: 'motivation',
@@ -10,23 +22,18 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'whyReason',
+        name: 'why',
         message: 'Why did you build this project?',
     },
     {
         type: 'input',
-        name: 'whatProblem',
+        name: 'problem',
         message: 'What problem does it solve?',
     },
     {
         type: 'input',
-        name: 'whatLearned',
+        name: 'learned',
         message: 'What did you learn?',
-    },
-    {
-        type: 'input',
-        name: 'standOut',
-        message: 'What makes your project stand out?',
     },
     {
         type: "checkbox",
@@ -36,38 +43,51 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'steps',
-        message: 'What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.',
-    },
-    {
-        type: 'input',
         name: 'instructions',
         message: 'Provide instructions and examples for use. Include screenshots as needed.',
     },
     {
         type: 'input',
         name: 'collaborators',
-        messages: 'List your collaborators, if any, with links to their GitHub profiles. (If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section. If you followed tutorials, include links to those here as well.)',
+        messages: 'List your collaborators, if any, with links to their GitHub profiles.',
     },
     {
         type: 'input',
-        name: 'license',
-        message: 'The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).',
+        name: 'credits',
+        message:'List your collaborators, if any, with links to their GitHub profiles. If you followed tutorials, include links to those here as well.',
     },
     {
         type: 'input',
         name: 'features',
         message:'If your project has a lot of features, list them here.',
-    }
+    },
+    {
+        type: 'input',
+        message: 'Where is this application deployed at?',
+        name: 'deploy',
+    },
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
 
+
+// TODO: Create a function to write README file
+function writeToFile(fileName, data)  {
+    fs.writeFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log('success'));
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+const init = async () => {
+    try {
+        const data = await inquirer.prompt(questions);
+        writeToFile('./generatedREADME.md', generateMarkdown(data));
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 // Function call to initialize app
 init();
+
+//exports
+module.exports = questions;
