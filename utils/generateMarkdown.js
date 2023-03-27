@@ -58,10 +58,10 @@ ${renderLicenseBadge(data.license)}
 ${renderLicenseLink(data.license)}
 ${renderLicenseSection(data.license)}
 
-## Features
+### Features
 ${data.features}
 
-## Deployed Link To Application
+### Deployed Link To Application
 ${data.deploy}
 `;
 }
