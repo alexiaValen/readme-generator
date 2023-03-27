@@ -6,8 +6,8 @@ var fs = require('fs');
 // TODO: Create an array of questions for user input
 const questions = [
     {
-        type: 'title',
-        name: 'motivation',
+        type: 'input',
+        name: 'title',
         message: 'What is your title?',
     },
     {
@@ -56,6 +56,19 @@ const questions = [
         name: 'credits',
         message:'List your collaborators, if any, with links to their GitHub profiles. If you followed tutorials, include links to those here as well.',
     },
+    {
+        type: 'list',
+        message: 'Choose your license for your project.',
+        name: 'license',
+        choices: [
+            { value: 'Apache' },   
+            { value: 'BSD3' },  
+            { value: 'LGPL' },  
+            { value: 'MIT' },  
+            { value: 'MPL' }, 
+            { value: 'None' }, 
+        ]
+      },
     {
         type: 'input',
         name: 'features',

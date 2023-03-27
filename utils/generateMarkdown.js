@@ -39,29 +39,29 @@ function generateMarkdown(data) {
 - ${data.problem}
 - ${data.learned}
 
-##Languages
+## Languages
 ${data.languages}
 
-##Instructions
+## Instructions
 ${data.instructions}
 
-##Collaborators
+## Collaborators
 ${data.collaborators}
 
-##Features
+## Features
 ${data.features}
 
-##Credits
+## Credits
 ${data.credits}
 
 ${renderLicenseBadge(data.license)}
 ${renderLicenseLink(data.license)}
 ${renderLicenseSection(data.license)}
 
-##Features
+## Features
 ${data.features}
 
-##Deployed Link To Application
+## Deployed Link To Application
 ${data.deploy}
 `;
 }
